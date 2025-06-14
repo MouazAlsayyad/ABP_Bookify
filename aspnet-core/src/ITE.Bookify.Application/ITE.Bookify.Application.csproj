@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ITE.Bookify</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ITE.Bookify.Domain\ITE.Bookify.Domain.csproj" />
+    <ProjectReference Include="..\ITE.Bookify.Application.Contracts\ITE.Bookify.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.4" />
+    <PackageReference Include="Serilog" Version="4.2.0" />
+    <PackageReference Include="Volo.Abp.Account.Application" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.FluentValidation" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.Identity.Application" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="9.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions">
+      <HintPath>C:\Program Files\dotnet\packs\Microsoft.AspNetCore.App.Ref\9.0.1\ref\net9.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

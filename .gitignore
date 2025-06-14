@@ -1,0 +1,81 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+*.dll
+*.exe
+*.log
+*.pdb
+*.cache
+*.mdb
+
+# ASP.NET
+project.lock.json
+project.fragment.lock.json
+artifacts/
+wwwroot/lib/
+App_Data/
+*.db-shm
+*.db-wal
+
+# Entity Framework
+*.db
+*.bak
+migrations/
+
+# Rider
+.idea/
+
+# VS Code
+.vscode/
+.history/
+
+# Angular
+node_modules/
+dist/
+tmp/
+.angular/
+.angular-cache/
+package-lock.json
+yarn.lock
+
+# NPM Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ABP specific
+*.voltron/
+*.voltron-cache/
+*.abp.devtools/
+volo.abp.cli/
+
+# Environment settings
+.env
+.env.*
+
+# Others
+*.ncrunch*
+*.vspscc
+*.vssscc
+_ReSharper*/
+*.DotSettings.user
+*.orig
+*.rej
+*.sublime-workspace
+*.sublime-project
+
+# Docker
+docker-compose.override.yml
+docker-compose.*.yml
+.docker/
+*.tar

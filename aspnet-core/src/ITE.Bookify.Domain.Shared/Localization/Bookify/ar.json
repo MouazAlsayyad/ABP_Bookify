@@ -1,0 +1,9 @@
+{
+  "culture": "ar",
+  "texts": {
+    "AppName": "Bookify",
+    "Menu:Home": "الصفحة الرئيسية",
+    "Welcome": "مرحباً",
+    "LongWelcomeMessage": "أهلاً بكم في هذا التطبيق. هذا مشروع ناشئ يعتمد على إطار عمل ABP، وDDD، وCQRS (فصل مسؤولية استعلامات الأوامر)، وEFCore، وDapper، وSeq (Serilog)، وMediatR."
+  }
+}

@@ -1,0 +1,76 @@
+<!-- Main container for layout and responsiveness -->
+<div class="container">
+
+  <!-- Action Buttons -->
+  <div class="action-buttons">
+    <button (click)="navigateToEdit()" class="btn btn-secondary">Edit Apartment</button>
+    <button (click)="navigateToHome()" class="btn btn-outline">Back to All Apartments</button>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="isLoading" class="loading-spinner">
+    <div class="spinner"></div>
+    <p>Loading apartment details...</p>
+  </div>
+
+  <!-- Apartment Detail Content -->
+  <div *ngIf="!isLoading && apartment" class="apartment-detail-container">
+
+    <!-- Header Section: Name and Description -->
+    <header class="apartment-header">
+      <h1>{{ apartment.name }}</h1>
+      <p class="description">{{ apartment.description }}</p>
+    </header>
+
+    <!-- Key Information Section: Price and Rating -->
+    <section class="apartment-key-info">
+      <div class="info-card">
+        <strong>Price:</strong>
+        <span class="price">{{ apartment.price | currency:apartment.currency }}</span>
+      </div>
+      <div class="info-card">
+        <strong>Average Rating:</strong>
+        <span class="rating">{{ apartment.averageRating }} <span class="stars-visual">★★★★★</span></span>
+        <span class="review-count">({{ apartment.reviewCount }} reviews)</span>
+      </div>
+    </section>
+
+    <!-- Details Section: Address and Amenities -->
+    <section class="apartment-details">
+      <div class="detail-section address-section">
+        <h3>Address</h3>
+        <p>{{ apartment.address.street }}, {{ apartment.address.city }}</p>
+        <p>{{ apartment.address.state }}, {{ apartment.address.country }}</p>
+        <p>{{ apartment.address.zipCode }}</p>
+      </div>
+
+      <div class="detail-section amenities-section" *ngIf="apartment.amenities && apartment.amenities.length > 0">
+        <h3>Amenities</h3>
+        <div class="amenity-list">
+          <span class="amenity-tag" *ngFor="let amenity of apartment.amenities">{{ amenity | amenity }}</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section class="reviews-section" *ngIf="apartment.reviews && apartment.reviews.length > 0">
+      <h2>Reviews</h2>
+      <div class="reviews-grid">
+        <div *ngFor="let review of apartment.reviews" class="review-card">
+          <div class="review-header">
+            <strong>{{ review.firstName }} {{ review.lastName }}</strong>
+            <span class="review-rating-text">({{ review.rating }} <span class="stars-filled">★</span>)</span>
+          </div>
+          <p class="review-date">{{ review.createdOnUtc | date:'mediumDate' }}</p>
+          <p class="review-comment">{{ review.comment }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- Not Found State -->
+  <div *ngIf="!isLoading && !apartment" class="not-found-message">
+    <p>Apartment not found.</p>
+    <p>Please check the URL or try again later.</p>
+  </div>
+</div>

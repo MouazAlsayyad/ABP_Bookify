@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ITE.Bookify</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ITE.Bookify.Domain.Shared\ITE.Bookify.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Bogus" Version="35.6.3" />
+    <PackageReference Include="MediatR" Version="12.5.0" />
+    <PackageReference Include="Volo.Abp.Core" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.Emailing" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.Identity.Domain" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.Identity" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.BackgroundJobs.Domain" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.AuditLogging.Domain" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Domain" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Domain" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Domain" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.OpenIddict.Domain" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Domain.OpenIddict" Version="9.1.1" />
+  </ItemGroup>
+
+</Project>

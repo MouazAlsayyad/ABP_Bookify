@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <RootNamespace>ITE.Bookify</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ITE.Bookify.Domain.Shared\ITE.Bookify.Domain.Shared.csproj" />
+    <ProjectReference Include="..\ITE.Bookify.Domain\ITE.Bookify.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="11.1.0" />
+    <PackageReference Include="Volo.Abp.ObjectExtending" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.Account.Application.Contracts" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.Identity.Application.Contracts" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.PermissionManagement.Application.Contracts" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.TenantManagement.Application.Contracts" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.FeatureManagement.Application.Contracts" Version="9.1.1" />
+    <PackageReference Include="Volo.Abp.SettingManagement.Application.Contracts" Version="9.1.1" />
+  </ItemGroup>
+
+</Project>

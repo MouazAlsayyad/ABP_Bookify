@@ -1,0 +1,15 @@
+{
+  "culture": "en",
+  "texts": {
+    "AppName": "Bookify",
+    "Menu:Home": "Home",
+    "Welcome": "Welcome",
+    "LongWelcomeMessage": "Welcome to the application. This is a startup project based on the ABP framework , DDD, CQRS (Command Query Responsibility Segregation) , EFCore, Dapper, Seq (Serilog) And MediatR.",
+    "Permission:Apartments": "Apartments",
+    "Permission:Apartments.Create": "Create new Apartment",
+    "Permission:Apartments.Edit": "Edit the Apartment",
+    "Permission:Bookings": "Bookings",
+    "Permission:Reviews": "Reviews"
+
+  }
+}

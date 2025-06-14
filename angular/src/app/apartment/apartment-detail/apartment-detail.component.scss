@@ -1,0 +1,380 @@
+/* apartment-detail.component.css */
+
+/* Define CSS Variables for easy theming */
+:root {
+  --primary-color: #007bff;
+  /* A vibrant blue for accents and primary actions */
+  --secondary-color: #6c757d;
+  /* Muted grey for secondary text */
+  --background-color: #f8f9fa;
+  /* Light background for the page */
+  --card-background: #ffffff;
+  /* White background for main content cards */
+  --border-color: #e0e0e0;
+  /* Light grey for borders */
+  --shadow-color: rgba(0, 0, 0, 0.08);
+  /* Subtle shadow for depth */
+  --text-color: #343a40;
+  /* Dark grey for general text */
+  --heading-color: #212529;
+  /* Even darker for headings */
+  --star-color: #ffc107;
+  /* Gold for star ratings */
+  --danger-color: #dc3545;
+  /* Red for 'not found' or error messages */
+
+  --font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+  /* Modern sans-serif font */
+  --border-radius: 8px;
+  /* Rounded corners for elements */
+  --spacing-unit: 1rem;
+  /* Base spacing unit (16px) */
+}
+
+/* Basic body styling */
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Main container for max-width and centering */
+.container {
+  max-width: 1200px;
+  /* Max width for content */
+  margin: 2rem auto;
+  /* Center the container with vertical margin */
+  padding: 0 var(--spacing-unit);
+  /* Horizontal padding */
+}
+
+/* Loading Spinner */
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: var(--secondary-color);
+}
+
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #007bff;
+  /* Primary color for spinner */
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Apartment Detail Container (Main content area) */
+.apartment-detail-container {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  padding: 2.5rem;
+  display: grid;
+  /* Use CSS Grid for overall layout */
+  gap: 2rem;
+  /* Gap between grid items */
+  grid-template-columns: 1fr;
+  /* Default to single column for mobile */
+}
+
+/* Responsive Grid for larger screens */
+@media (min-width: 768px) {
+  .apartment-detail-container {
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns */
+    grid-template-areas:
+      "header header"
+      /* Header spans full width */
+      "key-info key-info"
+      /* Key info spans full width */
+      "details reviews";
+    /* Details on left, Reviews on right */
+  }
+
+  .apartment-header {
+    grid-area: header;
+  }
+
+  .apartment-key-info {
+    grid-area: key-info;
+  }
+
+  .apartment-details {
+    grid-area: details;
+  }
+
+  .reviews-section {
+    grid-area: reviews;
+  }
+}
+
+/* Header Section (Apartment Name and Description) */
+.apartment-header {
+  text-align: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+  /* Separator line */
+}
+
+.apartment-header h1 {
+  font-size: 2.8rem;
+  color: var(--heading-color);
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.apartment-header .description {
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  max-width: 800px;
+  margin: 0 auto;
+  /* Center description */
+}
+
+/* Key Information Section (Price, Average Rating) */
+.apartment-key-info {
+  display: flex;
+  /* Use flexbox for horizontal layout */
+  flex-wrap: wrap;
+  /* Allow wrapping on smaller screens */
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.info-card {
+  background-color: var(--background-color);
+  padding: 1.2rem 1.8rem;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--border-color);
+  text-align: center;
+  flex: 1;
+  /* Allows cards to grow and shrink */
+  min-width: 250px;
+  /* Minimum width before wrapping */
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+  /* Subtle inner shadow */
+}
+
+.info-card strong {
+  display: block;
+  /* Forces label to its own line */
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  /* Capitalize labels */
+  letter-spacing: 0.05em;
+}
+
+.info-card .price {
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  /* Highlight price */
+}
+
+.info-card .rating {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--heading-color);
+}
+
+.info-card .stars-visual {
+  color: var(--star-color);
+  /* Gold color for stars */
+  letter-spacing: 2px;
+  /* Space between stars */
+  font-size: 1.4rem;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.info-card .review-count {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--secondary-color);
+  margin-top: 0.3rem;
+}
+
+/* Apartment Details (Address and Amenities Sections) */
+.apartment-details {
+  display: flex;
+  flex-direction: column;
+  /* Stack sections vertically */
+  gap: 2rem;
+  padding-right: 0;
+}
+
+@media (min-width: 768px) {
+  .apartment-details {
+    padding-right: 1rem;
+    /* Add spacing and border for desktop */
+    border-right: 1px solid var(--border-color);
+  }
+}
+
+.detail-section h3 {
+  font-size: 1.5rem;
+  color: var(--heading-color);
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  /* Accent underline */
+  padding-bottom: 0.5rem;
+  display: inline-block;
+  /* Shrink border to content width */
+}
+
+.address-section p {
+  margin: 0.4rem 0;
+  font-size: 1.05rem;
+  color: var(--text-color);
+}
+
+/* Amenities Section Styling */
+.amenity-list {
+  display: flex;
+  flex-wrap: wrap;
+  /* Allow amenity tags to wrap */
+  gap: 0.75rem;
+  /* Space between tags */
+}
+
+.amenity-tag {
+  background-color: #007bff;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  /* Pill shape for tags */
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+  /* Smooth hover effect */
+  white-space: nowrap;
+  /* Prevent tag text from breaking */
+}
+
+.amenity-tag:hover {
+  background-color: #0056b3;
+  /* Darker blue on hover */
+}
+
+/* Reviews Section Styling */
+.reviews-section h2 {
+  font-size: 2rem;
+  color: var(--heading-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.reviews-grid {
+  display: grid;
+  gap: 1.5rem;
+  /* Space between review cards */
+  grid-template-columns: 1fr;
+  /* Single column on mobile */
+}
+
+@media (min-width: 768px) {
+  .reviews-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Auto-fit columns for desktop */
+  }
+}
+
+.review-card {
+  background-color: var(--background-color);
+  padding: 1.5rem;
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  border: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  /* Ensures cards in a row have same height */
+}
+
+.review-card .review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.review-card .review-header strong {
+  font-size: 1.1rem;
+  color: #007bff;
+  /* Highlight reviewer name */
+}
+
+.review-card .review-rating-text {
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--heading-color);
+}
+
+.review-card .stars-filled {
+  color: var(--star-color);
+  font-size: 1.2em;
+  margin-left: 0.2em;
+}
+
+.review-card .review-date {
+  font-size: 0.85rem;
+  color: var(--secondary-color);
+  margin-bottom: 1rem;
+  text-align: right;
+  border-bottom: 1px dashed var(--border-color);
+  /* Dashed separator */
+  padding-bottom: 0.5rem;
+}
+
+.review-card .review-comment {
+  font-size: 1rem;
+  color: var(--text-color);
+  flex-grow: 1;
+  /* Ensures comment takes up available space */
+}
+
+/* Not Found Message */
+.not-found-message {
+  text-align: center;
+  padding: 3rem;
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 12px var(--shadow-color);
+  color: var(--danger-color);
+  font-size: 1.3rem;
+  margin-top: 2rem;
+}
+
+.not-found-message p:last-child {
+  font-size: 1rem;
+  color: var(--secondary-color);
+  margin-top: 1rem;
+}

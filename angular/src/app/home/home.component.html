@@ -1,0 +1,87 @@
+<!-- apartment-list.component.html -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-right mb-3">
+      <button class="btn btn-primary" (click)="navigateToCreate()">Create New Apartment</button>
+    </div>
+  </div>
+
+  <!-- Welcome / Login Section -->
+  <div class="welcome-card" *ngIf="!hasLoggedIn">
+    <div class="card-content">
+      <h2 class="card-title-lg">Welcome</h2>
+      <p class="card-text-lg">
+        To see the content of this page, you must log in.
+      </p>
+      <button class="btn-custom primary-btn mt-custom-2" (click)="login()">Login</button>
+    </div>
+  </div>
+
+  <!-- Main Content When Logged In -->
+  <div *ngIf="hasLoggedIn" class="apartment-list-page">
+    <h1 class="page-title">Available Apartments</h1>
+
+    <!-- Search Filters -->
+    <div class="filter-section">
+      <input type="text" class="form-control-custom" placeholder="Search by keyword..."
+             [(ngModel)]="searchKey" (ngModelChange)="onSearchKeyChange($event)">
+
+      <input type="date" class="form-control-custom" placeholder="Start Date"
+             [(ngModel)]="startDate" (ngModelChange)="onStartDateChange($event)" [min]="today">
+
+      <input type="date" class="form-control-custom" placeholder="End Date"
+             [(ngModel)]="endDate" (ngModelChange)="onEndDateChange($event)" [min]="startDate || today">
+
+      <button class="btn-custom info-btn" (click)="applyFilters()">Search</button>
+    </div>
+
+    <!-- Apartment Cards Grid -->
+    <div class="apartment-list-grid" *ngIf="apartments.length > 0">
+      <div class="apartment-item-card" *ngFor="let apartment of apartments">
+        <div class="apartment-card-content">
+          <h3 class="apartment-card-title">{{ apartment.name }}</h3>
+          <p class="apartment-card-address">{{ apartment.address?.street }}, {{ apartment.address?.city }}</p>
+          <p class="apartment-card-description">
+            {{ apartment.description | slice:0:100 }}{{ apartment.description && apartment.description.length > 100 ? '...' : '' }}
+          </p>
+          <div class="apartment-card-footer">
+            <p class="apartment-card-price">
+              <strong>{{ apartment.price | currency:apartment.currency:'symbol':'1.0-0' }}</strong>
+            </p>
+            <button class="btn-custom primary-btn" (click)="viewApartment(apartment.id)">View Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Apartments Found Message -->
+    <div *ngIf="apartments.length === 0 && !isLoading" class="info-message">
+      <p>No apartments found matching your criteria.</p>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="isLoading" class="loading-spinner-small">
+      <div class="spinner"></div>
+      <p>Loading apartments...</p>
+    </div>
+
+    <!-- Pagination -->
+    <nav aria-label="Apartment navigation"
+         *ngIf="!isLoading && (totalPages > 1 || currentPage > 1 || apartments.length === searchDto.pageSize)"
+         class="custom-pagination-nav">
+      <ul class="custom-pagination">
+        <li class="pagination-item" [class.disabled]="currentPage === 1">
+          <a class="pagination-link" href="javascript:void(0)" (click)="previousPage()">Previous</a>
+        </li>
+        <li class="pagination-item" *ngFor="let pageNum of pageNumbers" [class.active]="pageNum === currentPage">
+          <a class="pagination-link" href="javascript:void(0)" (click)="goToPage(pageNum)">{{ pageNum }}</a>
+        </li>
+        <li class="pagination-item" [class.disabled]="currentPage === totalPages && apartments.length < searchDto.pageSize">
+          <a class="pagination-link" href="javascript:void(0)" (click)="nextPage()">Next</a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</div>

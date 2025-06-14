@@ -1,0 +1,70 @@
+<div class="container">
+  <h1>{{ isEditMode ? 'Edit Apartment' : 'Create Apartment' }}</h1>
+
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <!-- Name -->
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input type="text" id="name" formControlName="name" class="form-control">
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description</label>
+      <textarea id="description" formControlName="description" class="form-control"></textarea>
+    </div>
+
+    <!-- Address -->
+    <div formGroupName="address">
+      <h3>Address</h3>
+      <div class="form-group">
+        <label for="street">Street</label>
+        <input type="text" id="street" formControlName="street" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" id="city" formControlName="city" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="state">State</label>
+        <input type="text" id="state" formControlName="state" class="form-control">
+      </div>
+       <div class="form-group">
+        <label for="zipCode">Zip Code</label>
+        <input type="text" id="zipCode" formControlName="zipCode" class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" id="country" formControlName="country" class="form-control">
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group">
+      <label for="priceAmount">Price</label>
+      <input type="number" id="priceAmount" formControlName="priceAmount" class="form-control">
+    </div>
+
+    <!-- Cleaning Fee -->
+    <div class="form-group">
+      <label for="cleaningFeeAmount">Cleaning Fee</label>
+      <input type="number" id="cleaningFeeAmount" formControlName="cleaningFeeAmount" class="form-control">
+    </div>
+
+    <!-- Currency -->
+    <div class="form-group">
+      <label for="currency">Currency</label>
+      <input type="text" id="currency" formControlName="currency" class="form-control">
+    </div>
+
+    <!-- Amenities -->
+    <div class="form-group">
+      <h3>Amenities</h3>
+      <div *ngFor="let amenity of amenities">
+        <input type="checkbox" [value]="amenity.id" [checked]="isAmenitySelected(amenity.id)" (change)="onCheckboxChange($event)"> {{ amenity.name }}
+      </div>
+    </div>
+    
+    <button type="submit" [disabled]="form.invalid" class="btn btn-primary">{{ isEditMode ? 'Update' : 'Create' }}</button>
+  </form>
+</div>
