@@ -197,22 +197,6 @@ After running the database migrator, you can use the default admin credentials:
 
 > **Note**: Change the default password after first login for security.
 
-## 🧪 Testing
-
-### Backend Tests
-
-```bash
-cd aspnet-core/test/ITE.Bookify.Application.Tests
-dotnet test
-```
-
-### Frontend Tests
-
-```bash
-cd angular
-npm test
-```
-
 ## 📚 Key Concepts
 
 ### Domain Entities
@@ -264,3 +248,4 @@ This project uses the ABP Framework which is licensed under the MIT License.
 ---
 
 ### Built with ❤️ using ABP Framework
+
